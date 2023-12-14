@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "3001:3001"
+    links:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb+srv://mihai:zC5NW3hR9R7YP7UO@cluster0.ungilcp.mongodb.net/myDatabase?retryWrites=true&w=majority
+      - NODE_ENV = development
+    volumes:
+      - .:/usr/src/app
+    command: npm start
+
+  test:
+    build: .
+    environment:
+      - NODE_ENV=test
+    command: npm test
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
