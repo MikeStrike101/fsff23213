@@ -26,6 +26,8 @@ Clone the repository:
 git clone https://github.com/MikeStrike101/fsff23213.git
 npm install
 docker compose up --build
+```
+
 
 Server will start listening on port 3001. Unit tests and integration tests will get executed. To make a GET request for the average temperature and humidity for sensor 1
 in a week: http://localhost:3001/sensor?sensor_id=1&startDate=2023-06-01&endDate=2023-06-08&metrics=temperature,humidity&statistic=average
